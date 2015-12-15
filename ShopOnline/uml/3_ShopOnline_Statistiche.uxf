@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>112</y>
+      <w>238</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ProdottoCostosoVisitor
+--
+-strategy: ProdottoCostosoStrategy
+--
++ProdottoCostosoVisitor(ProdottoCostosoStrategy)
++analizza(Alimento)
++analizza(Pacco)
++getProdottoList(): List&lt;Prodotto&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>7</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ProdottoVisitor
+--
+/+analizza(Alimento)/
+/+analizza(Pacco)/
+/+toString(): String/
+/+getResult(): String/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>616</x>
+      <y>609</y>
+      <w>231</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>public boolean isProdottoDaElaborare(Prodotto p)
+{
+   return classCheck.isInstance(p);
+}
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>721</x>
+      <y>588</y>
+      <w>21</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>112</x>
+      <y>14</y>
+      <w>119</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>/Prodotto/
+{abstract}
+--
+
+--
+/+accept(ProdottoVisitor)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>70</x>
+      <y>182</y>
+      <w>175</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Double dispatch
+public void accept(ProdottoVisitor pv)
+{
+   pv.analizza(this);
+}
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>112</y>
+      <w>245</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>PrezzoMedioVisitor
+--
+-calculator: PrezzoMedioCalculator
+--
++PrezzoMedioProdottoVisitor(ProdottoChecker)
++analizza(Alimento)
++analizza(Pacco)
++getPrezzoMedio(): double
++toString(): String
++getResult(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>84</y>
+      <w>98</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>120.0;10.0;120.0;30.0;10.0;30.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>658</x>
+      <y>84</y>
+      <w>77</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;90.0;30.0;90.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>371</x>
+      <y>42</y>
+      <w>98</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Delega la logica all'oggetto strategy
+(Strategy)
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>77</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>532</x>
+      <y>455</y>
+      <w>154</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>void analizza(Prodotto p)
+{
+   elementiVisitati++;
+   sommaPrezzi += p.getPrezzo();
+}
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>623</x>
+      <y>399</y>
+      <w>49</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>50.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>721</x>
+      <y>455</y>
+      <w>224</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>public void getPrezzoMedio()
+{
+   return sommaPrezzi / elementiVisitati;
+}
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>847</x>
+      <y>413</y>
+      <w>63</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;70.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>63</x>
+      <y>147</y>
+      <w>105</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;130.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>287</x>
+      <y>357</y>
+      <w>238</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>/ProdottoCostosoStrategy/
+{abstract}
+--
+-prezzoRiferimento: Double
+-prodottoList: List&lt;Prodotto&gt;
+--
++ProdottoCostosoStrategy(ProdottoChecker)
+~analizza(Prodotto)
+-isNuovoPrezzoRiferimentoOrNull(Prodotto): boolean
+/~isNuovoPrezzoRiferimento(Prodotto): boolean/
++getProdottoList(): List&lt;Prodotto&gt;
+#getPrezzoRiferimento(): double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>266</x>
+      <y>133</y>
+      <w>112</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>140.0;10.0;110.0;10.0;110.0;140.0;10.0;140.0;10.0;340.0;30.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>49</x>
+      <y>336</y>
+      <w>210</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>void analizza(Prodotto p)
+{
+   if (isNuovoPrezzoRiferimentoOrNull(p))
+   {
+      prezzoRiferimento = p.getPrezzo();
+      prodottoList.clear();
+      prodottoList.add(p);
+   }
+   else if (p.getPrezzo() == prezzoRiferimento)
+   {
+      if (!prodottoList.contains(p))
+         prodottoList.add(p);
+   }
+}
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>252</x>
+      <y>399</y>
+      <w>49</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>357</y>
+      <w>196</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>PrezzoMedioCalculator
+--
+-elementiVisitati :int
+-sommaPrezzi: double
+--
++PrezzoMedioCalculator(ProdottoChecker)
+~analizza(Prodotto)
++getPrezzoMedio(): double
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>847</x>
+      <y>126</y>
+      <w>63</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;70.0;10.0;70.0;340.0;10.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>532</x>
+      <y>231</y>
+      <w>196</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>/StatisticheStrategy/
+{abstract}
+--
+-checker: ProdottoChecker
+--
++StatisticheStrategy(ProdottoChecker)
++analizzaProdotto(Prodotto)
+/~analizza(Prodotto)/
+-isProdottoDaElaborare(Prodotto): boolean
+/+toString(): String/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>329</y>
+      <w>70</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;80.0;30.0;80.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>441</x>
+      <y>329</y>
+      <w>140</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;180.0;30.0;10.0;30.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>315</x>
+      <y>266</y>
+      <w>189</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>public void analizzaProdotto(Prodotto p)
+{
+   if (isProdottoDaElaborare(p))
+      analizza(p);
+}
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>497</x>
+      <y>287</y>
+      <w>49</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>623</x>
+      <y>525</y>
+      <w>217</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>ProdottoChecker
+--
+-Class&lt;? extends Prodotto&gt; classCheck
+--
++ProdottoChecker(Class&lt;? extends Prodotto&gt;)
++ProdottoChecker(Prodotto)
++isProdottoDaElaborare(Prodotto): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>721</x>
+      <y>259</y>
+      <w>252</w>
+      <h>287</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;340.0;10.0;340.0;390.0;170.0;390.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>147</x>
+      <y>525</y>
+      <w>217</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>ProdottoPiuCostosoStrategy
+--
+
+--
++ProdottoPiuCostosoStrategy(ProdottoChecker)
+~isNuovoPrezzoRiferimento(Prodotto): boolean
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>392</x>
+      <y>525</y>
+      <w>217</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>ProdottoMenoCostosoStrategy
+--
+
+--
++ProdottoMenoCostosoStrategy(ProdottoChecker)
+~isNuovoPrezzoRiferimento(Prodotto): boolean
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>315</x>
+      <y>476</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>476</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>147</x>
+      <y>609</y>
+      <w>217</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>boolean isNuovoPrezzoRiferimento(Prodotto p)
+{
+   return p.getPrezzo() &gt; getPrezzoRiferimento();
+}
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>392</x>
+      <y>609</y>
+      <w>217</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>boolean isNuovoPrezzoRiferimento(Prodotto p)
+{
+   return p.getPrezzo() &lt; getPrezzoRiferimento();
+}
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>245</x>
+      <y>588</y>
+      <w>21</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>588</y>
+      <w>21</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>763</x>
+      <y>28</y>
+      <w>98</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Visita tutti i tipi di
+prodotto
+(Visitor)
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>686</x>
+      <y>28</y>
+      <w>91</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>91</x>
+      <y>63</y>
+      <w>56</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;60.0;30.0;10.0;30.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>35</x>
+      <y>91</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>/Alimento/
+{abstract}
+--
+
+--
++accept(ProdottoVisitor)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>175</x>
+      <y>91</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>/Pacco/
+{abstract}
+--
+
+--
++accept(ProdottoVisitor)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>189</x>
+      <y>63</y>
+      <w>63</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;70.0;30.0;70.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>168</x>
+      <y>147</y>
+      <w>98</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>120.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+</diagram>
