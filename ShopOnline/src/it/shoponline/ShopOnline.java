@@ -3,7 +3,7 @@ package it.shoponline;
 import it.shoponline.controller.ShopOnlineController;
 import javax.swing.SwingUtilities;
 
-/**
+/**.
  *	View  		-- button -->	Controller
  * 	Controller  -- modify -->	Model
  *	Model		-- notify -->	Controller
